@@ -11,7 +11,6 @@ const User = require('../../models/User');
 // @desc Test route
 // @access Public
 router.get('/', auth, async (req, res) => {
-  // res.send('Auth Route');
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
@@ -21,7 +20,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// @route GET api/auth
+// @route POST api/auth
 // @desc Authenticate user & get token
 // @access Public
 router.post(
@@ -67,7 +66,6 @@ router.post(
           res.json({ token });
         }
       );
-      // res.send('User route');
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error In User');
