@@ -17,14 +17,12 @@ const Login = ({ login, isAuthenticated }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    console.log('submitted');
   };
 
   // Redict if logged in
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
-  // console.log('is auth', auth);
 
   return (
     <Fragment>
