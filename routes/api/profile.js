@@ -297,6 +297,9 @@ router.put(
 // @desc     Get user repos from Github
 // @access   Public
 router.get('/github/:username', async (req, res) => {
+  
+  const token = config.get('githubToken');;
+  console.log('token',token);
   try {
     const uri = encodeURI(
       `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
@@ -315,3 +318,5 @@ router.get('/github/:username', async (req, res) => {
 });
 
 module.exports = router;
+
+
